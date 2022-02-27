@@ -1,0 +1,59 @@
+# Copyright (c) 2022 Cypress Semiconductor Corporation.
+#
+# SPDX-License-Identifier: Apache-2.0
+
+# Add mtb-hal-cat1
+zephyr_include_directories(include/)
+zephyr_include_directories(COMPONENT_PSOC6HAL/include/)
+zephyr_include_directories(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/include/)
+
+# packages sources
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/pin_packages/cyhal_psoc6_01_104_m_csp_ble.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/pin_packages/cyhal_psoc6_01_104_m_csp_ble_usb.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/pin_packages/cyhal_psoc6_01_116_bga_ble.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/pin_packages/cyhal_psoc6_01_116_bga_usb.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/pin_packages/cyhal_psoc6_01_124_bga.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/pin_packages/cyhal_psoc6_01_124_bga_sip.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/pin_packages/cyhal_psoc6_01_43_smt.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/pin_packages/cyhal_psoc6_01_68_qfn_ble.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/pin_packages/cyhal_psoc6_01_80_wlcsp.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/pin_packages/cyhal_psoc6_02_100_wlcsp.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/pin_packages/cyhal_psoc6_02_124_bga.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/pin_packages/cyhal_psoc6_02_128_tqfp.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/pin_packages/cyhal_psoc6_02_68_qfn.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/pin_packages/cyhal_psoc6_03_100_tqfp.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/pin_packages/cyhal_psoc6_03_49_wlcsp.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/pin_packages/cyhal_psoc6_03_68_qfn.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/pin_packages/cyhal_psoc6_03_68_qfn.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/pin_packages/cyhal_psoc6_04_64_tqfp.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/pin_packages/cyhal_psoc6_04_68_qfn.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/pin_packages/cyhal_psoc6_04_80_tqfp.c)
+
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/triggers/cyhal_triggers_psoc6_01.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/triggers/cyhal_triggers_psoc6_02.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/triggers/cyhal_triggers_psoc6_03.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/COMPONENT_CAT1A/source/triggers/cyhal_triggers_psoc6_04.c)
+
+# high level interface for interacting with CAT1 hardware
+zephyr_sources_ifdef(CONFIG_GPIO_CAT1 COMPONENT_PSOC6HAL/source/cyhal_gpio.c)
+zephyr_sources_ifdef(CONFIG_UART_CAT1 COMPONENT_PSOC6HAL/source/cyhal_uart.c)
+zephyr_sources_ifdef(CONFIG_ADC_CAT1 COMPONENT_PSOC6HAL/source/cyhal_adc_sar.c)
+zephyr_sources_ifdef(CONFIG_I2C_CAT1 COMPONENT_PSOC6HAL/source/cyhal_i2c.c)
+zephyr_sources_ifdef(CONFIG_SPI_CAT1 COMPONENT_PSOC6HAL/source/cyhal_spi.c)
+zephyr_sources_ifdef(CONFIG_TIMER_CAT1 COMPONENT_PSOC6HAL/source/cyhal_timer.c)
+zephyr_sources_ifdef(CONFIG_LPTIMER_CAT1 COMPONENT_PSOC6HAL/source/cyhal_lptimer.c)
+zephyr_sources_ifdef(CONFIG_PWM_CAT1 COMPONENT_PSOC6HAL/source/cyhal_pwm.c)
+zephyr_sources_ifdef(CONFIG_RTC_CAT1 COMPONENT_PSOC6HAL/source/cyhal_rtc.c)
+zephyr_sources_ifdef(CONFIG_TRNG_CAT1 COMPONENT_PSOC6HAL/source/cyhal_trng.c)
+zephyr_sources_ifdef(CONFIG_WTD_CAT1 COMPONENT_PSOC6HAL/source/cyhal_wdt.c)
+
+zephyr_library_sources(COMPONENT_PSOC6HAL/source/cyhal_hwmgr.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/source/cyhal_system.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/source/cyhal_scb_common.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/source/cyhal_tcpwm_common.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/source/cyhal_analog_common.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/source/cyhal_clock.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/source/cyhal_syspm.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/source/cyhal_utils.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/source/cyhal_utils_psoc.c)
+zephyr_library_sources(COMPONENT_PSOC6HAL/source/cyhal_interconnect.c)
