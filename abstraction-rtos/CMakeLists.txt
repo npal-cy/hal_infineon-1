@@ -1,9 +1,8 @@
 # Copyright (c) 2022 Cypress Semiconductor Corporation.
 # SPDX-License-Identifier: Apache-2.0
 
-
 # Add abstraction-rtos
-zephyr_include_directories(include/)
+zephyr_include_directories(include)
 
 # Enable CMSIS_RTOS_V2 support
 zephyr_include_directories_ifdef(CONFIG_CMSIS_RTOS_V2 include/COMPONENT_RTX)
