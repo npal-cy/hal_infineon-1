@@ -2,6 +2,8 @@
 # Copyright (c) 2020 Linumiz
 # SPDX-License-Identifier: Apache-2.0
 
+zephyr_library_named(modules_hal_infineon)
+
 ## Add PDL sources for XMC devices
 add_subdirectory_ifdef(CONFIG_HAS_XMCLIB XMCLib)
 
