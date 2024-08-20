@@ -53,7 +53,9 @@ extern "C" {
 /**
  * determine size (number of elements) in an array
  */
+#ifndef ARRAY_SIZE
 #define ARRAY_SIZE(a)                                 (sizeof(a) / sizeof(a[0]) )
+#endif
 
 #ifdef PROTO_MSGBUF
 uint32_t whd_dmapool_init(uint32_t memory_size);

@@ -21,6 +21,7 @@
  */
 
 #include <stdint.h>
+#include <stdbool.h>
 #include "cybsp.h"
 #include "cy_result.h"
 

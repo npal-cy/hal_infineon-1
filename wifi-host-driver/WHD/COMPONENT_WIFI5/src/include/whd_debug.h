@@ -18,6 +18,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "whd.h"
+#include "whd_utils.h"
 
 #ifndef INCLUDED_WHD_DEBUG_H
 #define INCLUDED_WHD_DEBUG_H

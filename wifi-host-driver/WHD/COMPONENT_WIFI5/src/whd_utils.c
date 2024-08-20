@@ -159,11 +159,11 @@ whd_tlv8_header_t *whd_parse_dot11_tlvs(const whd_tlv8_header_t *tlv_buf, uint32
 #ifdef WPRINT_ENABLE_WHD_DEBUG
 char *whd_ssid_to_string(uint8_t *value, uint8_t length, char *ssid_buf, uint8_t ssid_buf_len)
 {
-    memset(ssid_buf, 0, ssid_buf_len);
+    whd_mem_memset(ssid_buf, 0, ssid_buf_len);
 
     if (ssid_buf_len > 0)
     {
-        memcpy(ssid_buf, value, ssid_buf_len < length ? ssid_buf_len : length);
+        whd_mem_memcpy(ssid_buf, value, ssid_buf_len < length ? ssid_buf_len : length);
     }
 
     return ssid_buf;
@@ -1211,6 +1211,32 @@ uint8_t whd_ip4_to_string(const void *ip4addr, char *p)
 }
 
 #ifndef WHD_USE_CUSTOM_MALLOC_IMPL
+
+inline void whd_mem_memcpy (void *dest, const void *src, size_t len)
+{
+#ifdef PROTO_MSGBUF
+    char *p1 = (char *)dest, *p2 = (char *)src;
+    while(len--)
+    {
+        *(p1++) = *(p2++);
+    }
+#else
+    memcpy(dest, src, len);
+#endif
+}
+
+inline void whd_mem_memset (void *buf, int val, size_t len)
+{
+#ifdef PROTO_MSGBUF
+    char* p = (char*)buf;
+    while(len--)
+    {
+        *(p++) = val;
+    }
+#else
+    memset(buf, val, len);
+#endif
+}
 
 inline void *whd_mem_malloc (size_t size)
 {

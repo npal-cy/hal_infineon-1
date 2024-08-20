@@ -103,7 +103,7 @@ resource_result_t resource_read(const resource_hnd_t *resource, uint32_t offset,
 
     if (resource->location == RESOURCE_IN_MEMORY)
     {
-        memcpy(buffer, &resource->val.mem.data[offset], *size);
+        whd_mem_memcpy(buffer, &resource->val.mem.data[offset], *size);
     }
 #ifdef USES_RESOURCES_IN_EXTERNAL_STORAGE
     else if (resource->location == RESOURCE_IN_EXTERNAL_STORAGE)
@@ -223,7 +223,7 @@ whd_result_t host_get_resource_block(whd_driver_t whd_drv, whd_resource_type_t t
     host_platform_resource_size(whd_drv, type, &resource_size);
     host_get_resource_block_size(whd_drv, type, &block_size);
     host_get_resource_no_of_blocks(whd_drv, type, &block_count);
-    memset(r_buffer, 0, block_size);
+    whd_mem_memset(r_buffer, 0, block_size);
     read_pos = blockno * block_size;
 
     if (blockno >= block_count)
@@ -348,7 +348,7 @@ whd_result_t host_resource_read(whd_driver_t whd_drv, whd_resource_type_t type,
         {
             return WHD_BUFFER_SIZE_SET_ERROR;
         }
-        memcpy( (uint8_t *)buffer, wifi_nvram_image, sizeof(wifi_nvram_image) );
+        whd_mem_memcpy( (uint8_t *)buffer, wifi_nvram_image, sizeof(wifi_nvram_image) );
         *size_out = sizeof(wifi_nvram_image);
     }
     return WHD_SUCCESS;

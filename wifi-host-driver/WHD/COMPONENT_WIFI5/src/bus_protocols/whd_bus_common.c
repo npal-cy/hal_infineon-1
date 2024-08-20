@@ -355,7 +355,7 @@ whd_result_t whd_bus_transfer_backplane_bytes(whd_driver_t whd_driver, whd_bus_t
         if (direction == BUS_WRITE)
         {
             DISABLE_COMPILER_WARNING(diag_suppress = Pa039)
-            memcpy( ( (whd_transfer_bytes_packet_t *)packet )->data, data + size - remaining_buf_size, transfer_size );
+            whd_mem_memcpy( ( (whd_transfer_bytes_packet_t *)packet )->data, data + size - remaining_buf_size, transfer_size );
             ENABLE_COMPILER_WARNING(diag_suppress = Pa039)
             result = whd_bus_transfer_bytes(whd_driver, direction, BACKPLANE_FUNCTION,
                                             trans_addr, (uint16_t)transfer_size,
@@ -377,7 +377,7 @@ whd_result_t whd_bus_transfer_backplane_bytes(whd_driver_t whd_driver, whd_bus_t
                 goto done;
             }
             DISABLE_COMPILER_WARNING(diag_suppress = Pa039)
-            memcpy(data + size - remaining_buf_size, (uint8_t *)( (whd_transfer_bytes_packet_t *)packet )->data +
+            whd_mem_memcpy(data + size - remaining_buf_size, (uint8_t *)( (whd_transfer_bytes_packet_t *)packet )->data +
                    whd_bus_backplane_read_padd_size(whd_driver), transfer_size);
             ENABLE_COMPILER_WARNING(diag_suppress = Pa039)
         }
