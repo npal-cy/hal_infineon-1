@@ -438,11 +438,18 @@ whd_result_t whd_wifi_on(whd_driver_t whd_driver, whd_interface_t *ifpp)
     {
         country_struct->rev = (int32_t)htod32(-1);
     }
+printf("whd_proto_set_iovar \n\r");
     retval = whd_proto_set_iovar(ifp, buffer, 0);
     if (retval != WHD_SUCCESS)
     {
         /* Could not set wifi country */
         WPRINT_WHD_ERROR( ("Could not set Country code\n") );
+
+        while(1)
+        {
+            k_sleep(K_MSEC(10));
+
+        }
         return retval;
     }
 

@@ -773,6 +773,9 @@ uint32_t whd_bus_sdio_packet_available_to_read(whd_driver_t whd_driver)
         }
     }
 exit:
+    //WPRINT_WHD_ERROR( ("whd_bus_sdio_packet_available_to_read int_status : %d ( (int_status) & (FRAME_AVAILABLE_MASK) ) : %d\n", int_status, ( (int_status) & (FRAME_AVAILABLE_MASK) )) );
+	whd_bus_sdio_irq_enable(whd_driver, WHD_TRUE);
+    //printf("x\n\r");
     return ( (int_status) & (FRAME_AVAILABLE_MASK) );
 }
 
